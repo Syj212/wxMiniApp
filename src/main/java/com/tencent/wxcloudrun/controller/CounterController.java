@@ -54,7 +54,7 @@ public class CounterController {
    * @param request {@link CounterRequest}
    * @return API response json
    */
-  @PostMapping(value = "/api/count")
+  @PostMapping(value = "/api/count2")
   ApiResponse create(@RequestBody CounterRequest request) {
     logger.info("/api/count post request, action: {}", request.getAction());
 
@@ -67,6 +67,8 @@ public class CounterController {
       Counter counter = new Counter();
       counter.setId(1);
       counter.setCount(count);
+      counter.setCreatedAt(LocalDateTime.now());
+      counter.setUpdatedAt(LocalDateTime.now());
       counterService.upsertCount(counter);
       return ApiResponse.ok(count);
     } else if (request.getAction().equals("clear")) {

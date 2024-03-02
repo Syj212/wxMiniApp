@@ -23,8 +23,8 @@
     </delete>
 
     <update id="upsertCount" parameterType="com.tencent.wxcloudrun.model.Counter">
-        INSERT INTO `Counters`(`id`, `count`)
-        VALUE(#{id}, #{count}) 
+        INSERT INTO `Counters`(`id`, `count`, `createdAt`, `updatedAt`)
+        VALUE(#{id}, #{count}, #{createdAt}, #{updatedAt})
         ON DUPLICATE KEY UPDATE count=#{count}
     </update>
 
